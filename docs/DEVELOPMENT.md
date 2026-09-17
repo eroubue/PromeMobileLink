@@ -1,10 +1,10 @@
-# 开发接入文档（0.2.0）
+# 开发接入文档（0.2.1）
 
 适用于 PR 插件和 ACR 作者。推荐通过 Dalamud IPC 注册设置、读取云端授权，无需引用 `PromeMobileLink.dll`，无需在消费方保存账号密码或自行请求云端。此仓库分发二进制和文档，不提供生产源码、构建凭据或部署配置。
 
 ## 1. 当前能力与边界
 
-| 能力 | 0.2.0 状态 |
+| 能力 | 0.2.1 状态 |
 | --- | --- |
 | 当前角色云端授权查询／变化通知 | 已有 IPC |
 | QT 快捷开关手机控制 | 已有内置适配 |
@@ -112,7 +112,7 @@ bool IsMobileLinkVerified(Dalamud.Plugin.IDalamudPluginInterface pi)
 
 ## 4. 可复制的设置接入示例
 
-示例公开一个布尔开关。调用方注入自己的配置读写、线程安全的角色快照和框架线程调度函数。角色快照是 `(Cid, Generation)`：CID 使用非零 16 位大写十六进制，未登录返回 `null`；每次登出／登录／切角递增 Generation，即使回到同一 CID 也不能复用旧代次。`applyEnabled` 必须同步完成变更和必要保存，不能再排队而跳过第二次校验。
+示例公开一个布尔开关。调用方注入自己的配置读写、线程安全的角色快照和框架线程调度函数。角色快照是 `(Cid, Generation)`：CID 使用原始十进制字符串（不含前导零），不限制位数或数值上限，未登录返回 `null`；每次登出／登录／切角递增 Generation，即使回到同一 CID 也不能复用旧代次。`applyEnabled` 必须同步完成变更和必要保存，不能再排队而跳过第二次校验。
 
 ```csharp
 using System;
@@ -289,11 +289,11 @@ session 只存内存，不跨插件重启恢复、不滑动延期；期限取 ti
 | 请求头 | App | 插件 |
 | --- | --- | --- |
 | `X-MobileLink-Client` | `android` | `plugin` |
-| `X-MobileLink-Version` | `0.2.0` | `0.2.0` |
+| `X-MobileLink-Version` | `0.2.1` | `0.2.1` |
 
 公开 `GET /v1/version` 返回 `requiredVersion`、`updateMethod`、`updateUrl`。业务请求精确比较版本，缺失、重复、错类型、旧版或未发布新版被拒绝。HTTP 426 `client_update_required` 指明需更新客户端：App 为 `url`，插件为 `plugin_manager`。扫码确认也可能因电脑插件版本被拒绝，不能让用户反复更新手机。
 
-签名为 ES256，插件仅内置公钥；校验用途、账号、实例、CID、授权 ID、撤销版本、nonce 和时间。CID 是非零 16 位大写十六进制字符串，不转成十进制或 JSON 浮点数。
+签名为 ES256，插件仅内置公钥；校验用途、账号、实例、CID、授权 ID、撤销版本、nonce 和时间。CID 是原始十进制字符串，不含前导零，例如 `"18014449510679448"`；不得转成十六进制、JSON 数值或浮点数。仅校验格式，不限制位数或数值上限。
 
 ## 7. 接入验收
 
