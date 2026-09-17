@@ -4,10 +4,10 @@ PromeMobileLink 是配合 PR 本体使用的 Android 手机客户端。账号和
 
 ## 下载与更新
 
-- Android 最新版：[GitHub Releases](https://github.com/eroubue/PromeMobileLink/releases/latest)。下载 `PromeMobileLink-0.2.0.apk`，在手机上安装。
+- Android 最新版：[GitHub Releases](https://github.com/eroubue/PromeMobileLink/releases/latest)。下载 `PromeMobileLink-0.2.1.apk`，在手机上安装。
 - 电脑插件：通过 **PR 本体的插件管理** 安装或更新 PromeMobileLink，再重新加载插件。
 - Android 系统要求：Android 8.0 或更高版本。
-- 当前发行版本：`0.2.0`。Android 安装版本号：`2`。
+- 当前发行版本：`0.2.1`。Android 安装版本号：`3`。
 
 ## 连接
 
@@ -33,4 +33,4 @@ PromeMobileLink 是配合 PR 本体使用的 Android 手机客户端。账号和
 - [云端验证 IPC](docs/VERIFICATION_IPC.md)：授权查询、状态、事件与失效处理。
 - [更新记录](docs/CHANGELOG.md)。
 
-0.2.0 提供 QT 与主动接入来源的通用设置接口。
+0.2.1 提供 QT 与主动接入来源的通用设置接口。
