@@ -21,7 +21,7 @@
 1. `authorizationProof` 的 ES256 签名由内置 P-256 公钥验证，kid 在允许列表内。
 2. 固定 issuer/audience/version/purpose 正确，随机 nonce 与本次请求匹配。
 3. `0 < exp - iat <= 120`，UTC 和接收时固定的单调截止点都未到期；重复证明不延期。
-4. 当前角色 CID 为非零 16 位大写 hex，签名账号、实例、CID、授权 ID 和撤销版本全部匹配。
+4. 当前角色 CID 为原始十进制字符串，仅校验格式，不限制位数或数值上限；签名账号、实例、CID、授权 ID 和撤销版本全部匹配。
 5. 当前进程已取得该证明；未签名摘要或磁盘缓存不产生权限。
 
 这是当前仍有效的授权结果，不是“历史上曾经扫过码”的永久标记。每次执行受保护操作、启动 ACR，或进入持续运行逻辑时，都应重新调用 `IsVerified()`；不要在首次成功后一直缓存 `true`。
@@ -168,7 +168,7 @@ if (verification is null || !verification.IsVerified())
     "accountId": "acc_example",
     "prCodeId": "pr_example",
     "characterId": "char_example",
-    "cid": "0000000000000001",
+    "cid": "18014449510679448",
     "characterName": "角色名",
     "server": "区服名",
     "issuedAt": 1800000000,
@@ -191,7 +191,7 @@ if (verification is null || !verification.IsVerified())
 | `lastError` | string，可省略 | 最近错误信息，用于提示；没有错误时省略。存在网络错误也可能仍持有未到期授权。 |
 | `authorization` | object，可省略 | 最近保存的云端授权摘要。 |
 | `authorization.authorized` / `authorization.state` | boolean / string | 云端摘要的原始授权字段，没有重新计算当前角色及时间。使用顶层 `authorized` 或 `IsVerified` 作判断。 |
-| `authorization.cid` | string，可省略 | 被授权角色的 CID，按字符串处理；本插件使用 16 位大写十六进制表示角色 CID。 |
+| `authorization.cid` | string，可省略 | 被授权角色的原始十进制 CID 字符串，例如 `"18014449510679448"`；不补零、不转为数值，不限制位数或数值上限。 |
 | `authorization.accountId` / `prCodeId` / `characterId` | string，可省略 | 云端摘要中的账号、PR 码记录和角色记录 ID。 |
 | `authorization.characterName` / `server` | string，可省略 | 云端摘要中的角色和区服名称。 |
 | `authorization.issuedAt` / `expiresAt` / `lastCloudSyncAt` | integer，可省略 | 授权摘要的签发、到期及同步时间，均为 Unix 秒；C# 用 `long` / `long?` 接收。 |
