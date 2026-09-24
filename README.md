@@ -4,10 +4,10 @@ PromeMobileLink 是配合 PR 本体使用的 Android 手机客户端。账号和
 
 ## 下载与更新
 
-- Android 最新版：[GitHub Releases](https://github.com/eroubue/PromeMobileLink/releases/latest)。下载 `PromeMobileLink-0.2.1.apk`，在手机上安装。
-- 电脑插件：通过 **PR 本体的插件管理** 安装或更新 PromeMobileLink，再重新加载插件。
+- Android 最新版：[GitHub Releases](https://github.com/eroubue/PromeMobileLink/releases/latest)。下载 `PromeMobileLink-0.2.2.apk`，在手机上安装。
+- 电脑插件：通过 **PR 本体的插件管理** 安装或更新 PromeMobileLink，再重新加载插件。插件包与更新清单一并发布在 [GitHub Releases](https://github.com/eroubue/PromeMobileLink/releases/latest)：插件包为 `PromeMobileLink-Plugin-<版本>.zip`，更新清单 `PromeMobileLink.json` 的稳定地址为 `https://raw.githubusercontent.com/eroubue/PromeMobileLink/main/PromeMobileLink.json`，始终指向最新发行版本。
 - Android 系统要求：Android 8.0 或更高版本。
-- 当前发行版本：`0.2.1`。Android 安装版本号：`3`。
+- 当前发行版本：`0.2.2`。Android 安装版本号：`4`。
 
 ## 连接
 
@@ -16,7 +16,7 @@ PromeMobileLink 是配合 PR 本体使用的 Android 手机客户端。账号和
 3. 如 App 提示，先绑定 PR 码；在电脑插件界面刷新授权二维码，用 App 扫描并完成角色确认。
 4. 云端验证通过后，App 自动发现并连接电脑插件。
 
-云端要求的版本必须与本地版本完全一致，旧版、缺失版本号和未发布的新版本均不能通过验证。App 需要更新时会打开本仓库的 Releases 页面；插件需要更新时会提示使用 PR 本体的插件管理。更新完成后再进行授权。
+云端要求的版本必须与本地版本完全一致，旧版、缺失版本号和未发布的新版本均不能通过验证。App 需要更新时会打开本仓库的 Releases 页面；插件需要更新时会提示使用 PR 本体的插件管理，更新包来自本仓库 Releases。更新完成后再进行授权。
 
 ## 常见问题
 
@@ -25,7 +25,7 @@ PromeMobileLink 是配合 PR 本体使用的 Android 手机客户端。账号和
 - **局域网连接失败**：检查两端网络、防火墙和网络中的设备隔离设置，重新扫描插件二维码。
 - **云端暂不可用**：新的验证无法完成；已有授权有明确有效期，到期后停止控制，网络恢复后重新验证。
 
-本仓库仅发布 Android APK、开发者接入文档和更新记录。
+本仓库仅发布 Android APK、电脑插件包与更新清单、开发者接入文档和更新记录。
 
 ## 开发资料
 
