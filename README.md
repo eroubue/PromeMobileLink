@@ -4,10 +4,10 @@ PromeMobileLink 是配合 PR 本体使用的 Android 手机客户端。账号和
 
 ## 下载与更新
 
-- Android 最新版：[GitHub Releases](https://github.com/eroubue/PromeMobileLink/releases/latest)。下载 `PromeMobileLink-0.2.2.apk`，在手机上安装。
+- Android 最新版：[GitHub Releases](https://github.com/eroubue/PromeMobileLink/releases/latest)。下载 `PromeMobileLink-0.2.3.apk`，在手机上安装。
 - 电脑插件：通过 **PR 本体的插件管理** 安装或更新 PromeMobileLink，再重新加载插件。插件包与更新清单一并发布在 [GitHub Releases](https://github.com/eroubue/PromeMobileLink/releases/latest)：插件包为 `PromeMobileLink-Plugin-<版本>.zip`，更新清单 `PromeMobileLink.json` 的稳定地址为 `https://raw.githubusercontent.com/eroubue/PromeMobileLink/main/PromeMobileLink.json`，始终指向最新发行版本。
 - Android 系统要求：Android 8.0 或更高版本。
-- 当前发行版本：`0.2.2`。Android 安装版本号：`4`。
+- 当前发行版本：`0.2.3`。Android 安装版本号：`5`。
 
 ## 连接
 
